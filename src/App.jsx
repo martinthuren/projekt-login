@@ -9,10 +9,20 @@ function App() {
     facade.fetchData("recipes", "GET").then((data) => setDataFromServer(data));
   }, []);
 
+  const handleUpdate = (id) => {
+    // Handle the update logic here using the recipe ID
+    console.log(`Update recipe with ID: ${id}`);
+  };
+
+  const handleDelete = (id) => {
+    // Handle the delete logic here using the recipe ID
+    console.log(`Delete recipe with ID: ${id}`);
+  };
+
   return (
     <>
       <div>
-        <h1>Login demo</h1>
+        <h1>Show all recipes</h1>
         <div className="recipeContainer">
           <div className="recipes">
             {dataFromServer.map((recipe) => (
@@ -38,6 +48,14 @@ function App() {
                     <li key={index}>{step}</li>
                   ))}
                 </ol>
+                <div className="buttonContainer">
+                  <button onClick={() => handleUpdate(recipe.id)}>
+                    Update
+                  </button>
+                  <button onClick={() => handleDelete(recipe.id)}>
+                    Delete
+                  </button>
+                </div>
               </div>
             ))}
           </div>
